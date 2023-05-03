@@ -9,4 +9,6 @@ class AppStrings {
       '" A Powerful Electric Bike Makes It Possible\nTo Go Further And Faster With Less Effort"';
   static const String alreadyPurchased = 'Already Purchased?';
   static const String login = 'Login';
+  static const String loginHere = 'Login Here...';
+  static const String enterNumber = 'Please enter your mobile number';
 }

@@ -1,7 +1,7 @@
-import 'package:electro_bikes/screens/starting_page/widgets/startingpage_button.dart';
+import 'package:electro_bikes/screens/starting_page/widgets/logo.dart';
+import 'package:electro_bikes/screens/starting_page/widgets/starting_page_button.dart';
 import 'package:electro_bikes/utils/app_image_string.dart';
 import 'package:electro_bikes/utils/app_strings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,8 +13,29 @@ class StartingPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Image.asset(
-            AppImagesString.startingImage,
+          Stack(
+            children: [
+              Container(
+                height: 400,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(400),
+                    bottomRight: Radius.circular(400),
+                  ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xff0059D4),
+                      Color(0xff6399E4),
+                    ],
+                  ),
+                ),
+              ),
+              const Positioned(
+                top: 120,
+                left: 120,
+                child: Logo(),
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.only(
