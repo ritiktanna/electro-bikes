@@ -1,9 +1,10 @@
-import 'package:electro_bikes/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
-class NextButton extends StatelessWidget {
-  const NextButton({Key? key, this.onTap}) : super(key: key);
+class CommonButton extends StatelessWidget {
+  const CommonButton({Key? key, this.onTap, required this.text})
+      : super(key: key);
   final VoidCallback? onTap;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,12 @@ class NextButton extends StatelessWidget {
             ],
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 13),
+              padding: const EdgeInsets.symmetric(vertical: 13),
               child: Text(
-                AppStrings.next,
-                style: TextStyle(
+                text,
+                style: const TextStyle(
                   fontSize: 20,
                   color: Colors.white,
                   fontWeight: FontWeight.w700,

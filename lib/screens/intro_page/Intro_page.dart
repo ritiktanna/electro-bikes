@@ -1,9 +1,11 @@
 import 'package:electro_bikes/screens/intro_page/intro_page_screens/intro_page_screen_1.dart';
 import 'package:electro_bikes/screens/intro_page/intro_page_screens/intro_page_screen_2.dart';
-import 'package:electro_bikes/screens/intro_page/widget/next_button.dart';
+import 'package:electro_bikes/widget/common_button.dart';
 import 'package:electro_bikes/screens/starting_page/starting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../utils/app_strings.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -69,7 +71,8 @@ class _IntroPageState extends State<IntroPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30)
                   .copyWith(bottom: 70),
-              child: NextButton(
+              child: CommonButton(
+                text: AppStrings.next,
                 onTap: () {
                   nextPage();
                 },

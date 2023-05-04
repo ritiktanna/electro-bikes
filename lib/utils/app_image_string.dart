@@ -8,4 +8,5 @@ class AppImagesString {
   static const String mapImage = 'assets/images/map_image.png';
   static const String securityImage = 'assets/images/security.png';
   static const String loginPageVector = 'assets/images/login_vector.png';
+  static const String otpPageVector = 'assets/images/otp_page_vector.png';
 }

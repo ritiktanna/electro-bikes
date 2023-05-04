@@ -1,4 +1,4 @@
-import 'package:electro_bikes/screens/login/login_page.dart';
+import 'package:electro_bikes/screens/login_page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -14,8 +14,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+      theme: ThemeData().copyWith(
+        scaffoldBackgroundColor: Colors.white,
+      ),
       debugShowCheckedModeBanner: false,
+      supportedLocales: const [Locale('en')],
       home: LogInPage(),
     );
   }

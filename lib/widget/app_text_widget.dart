@@ -2,16 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyTextWidget extends StatelessWidget {
-  const MyTextWidget({Key? key, required this.data, this.textStyle})
+  const MyTextWidget(
+      {Key? key,
+      required this.data,
+      this.textStyle,
+      this.textAlign,
+      this.onTap})
       : super(key: key);
   final String data;
   final TextStyle? textStyle;
+  final TextAlign? textAlign;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      data,
-      style: GoogleFonts.poppins(textStyle: textStyle),
+    return GestureDetector(
+      onTap: onTap,
+      child: Text(
+        data,
+        style: GoogleFonts.poppins(textStyle: textStyle),
+        textAlign: textAlign,
+      ),
     );
   }
 }
