@@ -58,9 +58,14 @@ class StartingPage extends StatelessWidget {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 100),
-            child: LoginButton(),
+          Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: GestureDetector(
+              onTap: () {
+                // Get.to(LogInPage());
+              },
+              child: const LoginButton(),
+            ),
           ),
         ],
       ),

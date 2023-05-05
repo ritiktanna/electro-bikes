@@ -21,4 +21,6 @@ class AppStrings {
   static const String didNot = "Didn’t Receive Code? ";
   static const String sendAgain = "send Again";
   static const String verifyAndProceed = "Verify and Proceed";
+  static const String verified = "Verified";
+  static const String success = "You have successfully verified your account.";
 }

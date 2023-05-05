@@ -1,7 +1,12 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:electro_bikes/screens/verified_page/otp_verified_page.dart';
 import 'package:electro_bikes/utils/app_image_string.dart';
 import 'package:electro_bikes/utils/controller_class.dart';
 import 'package:electro_bikes/widget/app_text_widget.dart';
 import 'package:electro_bikes/widget/common_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
@@ -12,6 +17,10 @@ import '../../widget/electro_bike_text_logo.dart';
 class OTPPage extends StatelessWidget {
   OTPPage({Key? key}) : super(key: key);
   final ControllerClass controllerClass = Get.put(ControllerClass());
+  static String verificationId = '';
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  var code = '';
+  static String number = '';
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +29,21 @@ class OTPPage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: true,
+          title: const ElectroBikeTextLogo(),
+          leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
+          ),
+        ),
         body: Padding(
           padding:
               const EdgeInsets.symmetric(horizontal: 30.0).copyWith(top: 10),
@@ -28,24 +52,6 @@ class OTPPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          child: const Icon(Icons.arrow_back_ios),
-                          onTap: () {
-                            Get.back();
-                          },
-                        ),
-                        const Expanded(
-                          child: Align(
-                              alignment: Alignment.center,
-                              child: ElectroBikeTextLogo()),
-                        ),
-                      ],
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: Image.asset(
@@ -65,7 +71,7 @@ class OTPPage extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: MyTextWidget(
                       data:
-                          '+${controllerClass.countryCode.value}*******${controllerClass.phoneNumber.value.toString().substring(7, 10)}',
+                          '+${controllerClass.countryCode.value}*******${number.substring(7, 10)}',
                       textStyle: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -77,6 +83,10 @@ class OTPPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 25),
                     child: Pinput(
+                      length: 6,
+                      onChanged: (value) {
+                        code = value;
+                      },
                       defaultPinTheme: PinTheme(
                         width: 56,
                         height: 56,
@@ -109,10 +119,16 @@ class OTPPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 50, bottom: 30),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 50,
+                      bottom: 30,
+                    ),
                     child: CommonButton(
                       text: AppStrings.verifyAndProceed,
+                      onTap: () {
+                        verifyOTP();
+                      },
                     ),
                   )
                 ],
@@ -122,5 +138,20 @@ class OTPPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> verifyOTP() async {
+    try {
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId, smsCode: code);
+      await auth.signInWithCredential(credential);
+      Get.to(
+        const VerifiedPage(),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "656643899777",
+    "project_id": "electro-bike-9c7c0",
+    "storage_bucket": "electro-bike-9c7c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656643899777:android:9699b5cda4ab1a8bf0e880",
+        "android_client_info": {
+          "package_name": "com.example.electro_bikes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656643899777-08rrbbn8l4hj46mmoubg05kl5a6jfkrs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWeyWUZIqfhWBFh7riySPv9h4FygUgj4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656643899777-08rrbbn8l4hj46mmoubg05kl5a6jfkrs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

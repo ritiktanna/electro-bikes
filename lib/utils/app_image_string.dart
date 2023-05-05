@@ -9,4 +9,5 @@ class AppImagesString {
   static const String securityImage = 'assets/images/security.png';
   static const String loginPageVector = 'assets/images/login_vector.png';
   static const String otpPageVector = 'assets/images/otp_page_vector.png';
+  static const String verified = 'assets/images/verified_vector.png';
 }

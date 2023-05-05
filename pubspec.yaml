@@ -41,6 +41,9 @@ dependencies:
   intl_phone_field: ^3.1.0
   country_picker: ^2.0.20
   pinput: ^2.2.31
+  firebase_auth:
+  firebase_core:
+  shared_preferences: ^2.1.0
 
 dev_dependencies:
   flutter_test:

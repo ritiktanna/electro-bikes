@@ -2,7 +2,7 @@ import 'package:electro_bikes/utils/app_image_string.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../intro_page/Intro_page.dart';
+import '../intro_page/intro_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -51,6 +51,6 @@ class _SplashScreenState extends State<SplashScreen> {
         seconds: 3,
       ),
     );
-    Get.to(() => IntroPage());
+    Get.to(() => const IntroPage());
   }
 }
