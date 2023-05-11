@@ -23,4 +23,8 @@ class AppStrings {
   static const String verifyAndProceed = "Verify and Proceed";
   static const String verified = "Verified";
   static const String success = "You have successfully verified your account.";
+  static const String noInternet = "No Internet Connection";
+  static const String noInternetSubTitle =
+      "You seems travelled to stone age.\nPlease come to present.";
+  static const String retry = 'Retry';
 }

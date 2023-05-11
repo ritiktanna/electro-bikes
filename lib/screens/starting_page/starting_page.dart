@@ -10,6 +10,7 @@ class StartingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FocusScope.of(context).unfocus();
     return Scaffold(
       body: Column(
         children: [
@@ -62,7 +63,8 @@ class StartingPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 100),
             child: GestureDetector(
               onTap: () {
-                // Get.to(LogInPage());
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/login-page', (route) => false);
               },
               child: const LoginButton(),
             ),

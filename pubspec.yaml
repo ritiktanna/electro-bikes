@@ -36,7 +36,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_fonts:
-  get:
   smooth_page_indicator: ^1.1.0
   intl_phone_field: ^3.1.0
   country_picker: ^2.0.20
@@ -44,6 +43,16 @@ dependencies:
   firebase_auth:
   firebase_core:
   shared_preferences: ^2.1.0
+  flutter_native_splash: ^2.2.19
+  flutter_bloc: ^8.1.2
+  connectivity_plus: ^4.0.0
+  get:
+flutter_native_splash:
+  color : "#FFFFFF"
+  android: true
+  ios: true
+  web: false
+  image : 'assets/images/electro_logo_image.png'
 
 dev_dependencies:
   flutter_test:

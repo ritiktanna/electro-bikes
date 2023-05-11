@@ -3,6 +3,8 @@ import 'package:electro_bikes/utils/app_strings.dart';
 import 'package:electro_bikes/widget/app_text_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/app_route_string.dart';
+
 class VerifiedPage extends StatefulWidget {
   const VerifiedPage({Key? key}) : super(key: key);
 
@@ -65,6 +67,10 @@ class _VerifiedPageState extends State<VerifiedPage> {
   }
 
   Future<void> goToHomePage() async {
+    await Future.delayed(const Duration(seconds: 5));
+    Navigator.pushNamedAndRemoveUntil(
+        context, AppRoutes.homePage, (route) => false);
+
     // Future.delayed(Duration(seconds: 5)).then((value) => Get.to());
   }
 }

@@ -1,14 +1,19 @@
 import 'package:electro_bikes/screens/intro_page/intro_page_screens/intro_page_screen_1.dart';
 import 'package:electro_bikes/screens/intro_page/intro_page_screens/intro_page_screen_2.dart';
 import 'package:electro_bikes/widget/common_button.dart';
-import 'package:electro_bikes/screens/starting_page/starting_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_strings.dart';
 
 class IntroPage extends StatefulWidget {
-  const IntroPage({Key? key}) : super(key: key);
+  const IntroPage({
+    Key? key,
+    this.sharedPreferences,
+    this.seenKey,
+  }) : super(key: key);
+  final SharedPreferences? sharedPreferences;
+  final String? seenKey;
 
   @override
   State<IntroPage> createState() => _IntroPageState();
@@ -20,7 +25,15 @@ class _IntroPageState extends State<IntroPage> {
     IntroPageScreen1(),
     IntroPageScreen2()
   ];
+
   int activePage = 0;
+
+  @override
+  void initState() {
+    widget.sharedPreferences?.setBool(widget.seenKey!, true);
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +102,11 @@ class _IntroPageState extends State<IntroPage> {
       controller.animateToPage(activePage++,
           duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
     } else {
-      Get.offAll(const StartingPage());
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        '/starting-page',
+        (route) => false,
+      );
     }
   }
 }

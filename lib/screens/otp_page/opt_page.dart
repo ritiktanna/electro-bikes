@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:electro_bikes/screens/verified_page/otp_verified_page.dart';
 import 'package:electro_bikes/utils/app_image_string.dart';
+import 'package:electro_bikes/utils/app_route_string.dart';
 import 'package:electro_bikes/utils/controller_class.dart';
 import 'package:electro_bikes/widget/app_text_widget.dart';
 import 'package:electro_bikes/widget/common_button.dart';
@@ -36,7 +36,7 @@ class OTPPage extends StatelessWidget {
           title: const ElectroBikeTextLogo(),
           leading: GestureDetector(
             onTap: () {
-              Get.back();
+              Navigator.pop(context);
             },
             child: const Icon(
               Icons.arrow_back_ios,
@@ -71,7 +71,7 @@ class OTPPage extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: MyTextWidget(
                       data:
-                          '+${controllerClass.countryCode.value}*******${number.substring(7, 10)}',
+                          '+${controllerClass.countryCode.value}*******${number.substring(7)}',
                       textStyle: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -127,7 +127,7 @@ class OTPPage extends StatelessWidget {
                     child: CommonButton(
                       text: AppStrings.verifyAndProceed,
                       onTap: () {
-                        verifyOTP();
+                        verifyOTP(context);
                       },
                     ),
                   )
@@ -140,14 +140,15 @@ class OTPPage extends StatelessWidget {
     );
   }
 
-  Future<void> verifyOTP() async {
+  Future<void> verifyOTP(BuildContext context) async {
     try {
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
           verificationId: verificationId, smsCode: code);
       await auth.signInWithCredential(credential);
-      Get.to(
-        const VerifiedPage(),
-      );
+      if (context.mounted) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.verifiedPage, (route) => false);
+      }
     } catch (e) {
       if (kDebugMode) {
         print(e);

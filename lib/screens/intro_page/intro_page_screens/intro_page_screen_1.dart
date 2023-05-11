@@ -3,9 +3,6 @@ import 'package:electro_bikes/utils/app_image_string.dart';
 import 'package:electro_bikes/utils/app_strings.dart';
 import 'package:electro_bikes/widget/text_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../starting_page/starting_page.dart';
 
 class IntroPageScreen1 extends StatelessWidget {
   const IntroPageScreen1({Key? key}) : super(key: key);
@@ -20,7 +17,9 @@ class IntroPageScreen1 extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: MyTextButton(
-                onTap: startingScreen,
+                onTap: () {
+                  startingScreen(context);
+                },
                 data: AppStrings.skip,
                 textStyle:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
@@ -50,7 +49,7 @@ class IntroPageScreen1 extends StatelessWidget {
     );
   }
 
-  void startingScreen() {
-    Get.offAll(const StartingPage());
+  void startingScreen(BuildContext context) {
+    Navigator.pushNamedAndRemoveUntil(context, '/intro-page', (route) => false);
   }
 }
