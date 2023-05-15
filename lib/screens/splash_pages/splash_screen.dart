@@ -45,11 +45,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> introPage() async {
-    await Future.delayed(
+    await Future<Widget>.delayed(
       const Duration(
         seconds: 3,
       ),
     );
-    Get.to(() => const IntroPage());
+    Get.to<Widget>(() => const IntroPage());
   }
 }

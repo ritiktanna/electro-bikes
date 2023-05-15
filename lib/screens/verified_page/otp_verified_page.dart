@@ -67,10 +67,10 @@ class _VerifiedPageState extends State<VerifiedPage> {
   }
 
   Future<void> goToHomePage() async {
-    await Future.delayed(const Duration(seconds: 5));
-    Navigator.pushNamedAndRemoveUntil(
-        context, AppRoutes.homePage, (route) => false);
-
-    // Future.delayed(Duration(seconds: 5)).then((value) => Get.to());
+    await Future<void>.delayed(const Duration(seconds: 5));
+    if (context.mounted) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, AppRoutes.addVehiclePage, (route) => false);
+    }
   }
 }

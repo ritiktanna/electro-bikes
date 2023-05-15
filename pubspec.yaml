@@ -47,6 +47,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   connectivity_plus: ^4.0.0
   get:
+  very_good_analysis: ^4.0.0+1
 flutter_native_splash:
   color : "#FFFFFF"
   android: true

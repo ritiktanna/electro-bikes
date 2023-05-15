@@ -5,6 +5,8 @@ import 'package:electro_bikes/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../utils/app_route_string.dart';
+
 class StartingPage extends StatelessWidget {
   const StartingPage({Key? key}) : super(key: key);
 
@@ -64,7 +66,7 @@ class StartingPage extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, '/login-page', (route) => false);
+                    context, AppRoutes.logInPage, (route) => false);
               },
               child: const LoginButton(),
             ),

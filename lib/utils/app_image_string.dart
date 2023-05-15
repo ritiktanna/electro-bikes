@@ -11,4 +11,6 @@ class AppImagesString {
   static const String otpPageVector = 'assets/images/otp_page_vector.png';
   static const String verified = 'assets/images/verified_vector.png';
   static const String lostInternet = 'assets/images/404_page_vector.jpg';
+  static const String redBike = 'assets/images/red_scooter.png';
+  static const String scooter = 'assets/images/scooter.png';
 }

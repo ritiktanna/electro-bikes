@@ -6,4 +6,5 @@ class AppRoutes {
   static const String otpPage = '/OTP-page';
   static const String verifiedPage = '/verified-page';
   static const String homePage = '/home-page';
+  static const String addVehiclePage = '/vehicle-page';
 }

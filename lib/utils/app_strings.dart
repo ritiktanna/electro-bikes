@@ -27,4 +27,6 @@ class AppStrings {
   static const String noInternetSubTitle =
       "You seems travelled to stone age.\nPlease come to present.";
   static const String retry = 'Retry';
+  static const String addVehicle = 'Add a Vehicle';
+  static const String hello = 'Hello';
 }

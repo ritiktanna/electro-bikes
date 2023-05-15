@@ -13,8 +13,8 @@ class HomePage extends StatelessWidget {
         leading: GestureDetector(
           onTap: () {
             FirebaseAuth.instance.signOut();
-            Navigator.pushAndRemoveUntil(context,
-                AppRoutes.startingPage as Route<Object?>, (route) => false);
+            Navigator.pushNamedAndRemoveUntil(
+                context, AppRoutes.startingPage, (route) => false);
           },
           child: const Icon(
             Icons.cancel,

@@ -1,4 +1,4 @@
-import 'package:electro_bikes/bloc/internet_bloc/internet_bloc.dart';
+import 'package:electro_bikes/screens/add_vehicle/add_vehicle_screen.dart';
 import 'package:electro_bikes/screens/auth_check/auth_check.dart';
 import 'package:electro_bikes/screens/home_page/home_page.dart';
 import 'package:electro_bikes/screens/intro_page/intro_page.dart';
@@ -13,6 +13,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'cubits/internet/internet_cubit.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -22,7 +24,7 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     BlocProvider(
-      create: (context) => InternetBloc(),
+      create: (context) => InternetCubit(),
       child: MaterialApp(
         routes: {
           AppRoutes.introPage: (context) => const IntroPage(),
@@ -31,6 +33,7 @@ Future<void> main() async {
           AppRoutes.otpPage: (context) => OTPPage(),
           AppRoutes.verifiedPage: (context) => const VerifiedPage(),
           AppRoutes.homePage: (context) => const HomePage(),
+          AppRoutes.addVehiclePage: (context) => AddVehicle(),
         },
         theme: ThemeData().copyWith(
           scaffoldBackgroundColor: Colors.white,

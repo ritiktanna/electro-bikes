@@ -1,5 +1,6 @@
 import 'package:electro_bikes/screens/intro_page/widget/container.dart';
 import 'package:electro_bikes/utils/app_image_string.dart';
+import 'package:electro_bikes/utils/app_route_string.dart';
 import 'package:electro_bikes/utils/app_strings.dart';
 import 'package:electro_bikes/widget/text_button.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,7 @@ class IntroPageScreen1 extends StatelessWidget {
   }
 
   void startingScreen(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(context, '/intro-page', (route) => false);
+    Navigator.pushNamedAndRemoveUntil(
+        context, AppRoutes.startingPage, (route) => false);
   }
 }

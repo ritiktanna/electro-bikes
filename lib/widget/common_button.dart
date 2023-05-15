@@ -12,28 +12,32 @@ class CommonButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.maxFinite,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xff0059D4),
-              Color(0xff5A94E3),
-            ],
-          ),
+        decoration: BoxDecoration(
+          color: onTap == null ? Colors.grey : null,
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          gradient: onTap == null
+              ? null
+              : const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xff0059D4),
+                    Color(0xff5A94E3),
+                  ],
+                ),
         ),
         child: Center(
           child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 13),
-              child: Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                ),
-              )),
+            padding: const EdgeInsets.symmetric(vertical: 13),
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
         ),
       ),
     );
