@@ -29,4 +29,10 @@ class AppStrings {
   static const String retry = 'Retry';
   static const String addVehicle = 'Add a Vehicle';
   static const String hello = 'Hello';
+  static const String chassisNumber =
+      'Add your Electro Bike by entering your chassis number';
+  static const String frameNumber = 'Enter chassis/Frame Number';
+  static const String cantBeEmpty = 'Chassis Number Can\'t Be Empty';
+  static const String wrongChassisNumber =
+      'Chassis Number Is Greater then 17.PLEASE CHECK YOUR NUMBER';
 }

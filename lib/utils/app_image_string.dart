@@ -13,4 +13,5 @@ class AppImagesString {
   static const String lostInternet = 'assets/images/404_page_vector.jpg';
   static const String redBike = 'assets/images/red_scooter.png';
   static const String scooter = 'assets/images/scooter.png';
+  static const String blackBike = 'assets/images/black_bike.png';
 }

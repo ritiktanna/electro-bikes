@@ -1,14 +1,14 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:electro_bikes/cubits/firebase/firebase_cubit.dart';
 import 'package:electro_bikes/utils/app_image_string.dart';
 import 'package:electro_bikes/utils/app_route_string.dart';
-import 'package:electro_bikes/utils/controller_class.dart';
 import 'package:electro_bikes/widget/app_text_widget.dart';
 import 'package:electro_bikes/widget/common_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../utils/app_strings.dart';
@@ -16,7 +16,6 @@ import '../../widget/electro_bike_text_logo.dart';
 
 class OTPPage extends StatelessWidget {
   OTPPage({Key? key}) : super(key: key);
-  final ControllerClass controllerClass = Get.put(ControllerClass());
   static String verificationId = '';
   final FirebaseAuth auth = FirebaseAuth.instance;
   var code = '';
@@ -70,8 +69,8 @@ class OTPPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: MyTextWidget(
-                      data:
-                          '+${controllerClass.countryCode.value}*******${number.substring(7)}',
+                      data: '',
+                      // '+${controllerClass.countryCode.value}*******${number.substring(7)}',
                       textStyle: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -127,7 +126,9 @@ class OTPPage extends StatelessWidget {
                     child: CommonButton(
                       text: AppStrings.verifyAndProceed,
                       onTap: () {
-                        verifyOTP(context);
+                        BlocProvider.of<FireBaseCubit>(context).verifyOTP(code);
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, AppRoutes.verifiedPage, (route) => false);
                       },
                     ),
                   )

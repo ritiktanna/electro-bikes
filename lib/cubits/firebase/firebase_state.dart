@@ -10,7 +10,9 @@ class CodeUnSuccessState extends FireBaseState {}
 
 class CodeTimeOutState extends FireBaseState {}
 
-class ErrorState extends FireBaseState {
+class FireBaseErrorState extends FireBaseState {
   String? errorMessage;
-  ErrorState({this.errorMessage});
+  FireBaseErrorState({this.errorMessage});
 }
+
+class SignInState extends FireBaseState {}

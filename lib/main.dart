@@ -13,7 +13,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'cubits/internet/internet_cubit.dart';
+import 'cubits/chassis_number/chassis_number_cubit.dart';
+import 'cubits/firebase/firebase_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,8 +24,15 @@ Future<void> main() async {
   var firstTime = seen.getBool(seenKey) ?? false;
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
-    BlocProvider(
-      create: (context) => InternetCubit(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => FireBaseCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChassisNumberCubit(),
+        ),
+      ],
       child: MaterialApp(
         routes: {
           AppRoutes.introPage: (context) => const IntroPage(),
