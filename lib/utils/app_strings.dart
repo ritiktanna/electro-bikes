@@ -35,4 +35,13 @@ class AppStrings {
   static const String cantBeEmpty = 'Chassis Number Can\'t Be Empty';
   static const String wrongChassisNumber =
       'Chassis Number Is Greater then 17.PLEASE CHECK YOUR NUMBER';
+  static const String range = 'Range';
+  static const String km = 'Km';
+  static const String predicted = 'predicted';
+  static const String eco = 'Eco';
+  static const String normal = 'Normal';
+  static const String sport = 'Sport';
+  static const String lock = 'Lock';
+  static const String light = 'Light';
+  static const String trunk = 'Trunk';
 }

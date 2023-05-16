@@ -1,3 +1,4 @@
+import 'package:electro_bikes/cubits/features/feature_cubit.dart';
 import 'package:electro_bikes/screens/add_vehicle/add_vehicle_screen.dart';
 import 'package:electro_bikes/screens/auth_check/auth_check.dart';
 import 'package:electro_bikes/screens/home_page/home_page.dart';
@@ -15,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'cubits/chassis_number/chassis_number_cubit.dart';
 import 'cubits/firebase/firebase_cubit.dart';
+import 'cubits/range_selector/range_selector_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +33,12 @@ Future<void> main() async {
         ),
         BlocProvider(
           create: (context) => ChassisNumberCubit(),
+        ),
+        BlocProvider(
+          create: (context) => RangeSelectorCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FeatureCubit(),
         ),
       ],
       child: MaterialApp(

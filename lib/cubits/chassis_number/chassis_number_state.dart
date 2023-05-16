@@ -9,6 +9,11 @@ class RightChassisNumber extends ChassisNumber {
 
 class EmptyChassisNumber extends ChassisNumber {}
 
+class BiggerChassisNumber extends ChassisNumber {
+  String? errorMessage;
+  BiggerChassisNumber({this.errorMessage});
+}
+
 class WrongChassisNumber extends ChassisNumber {
   String? errorMessage;
   WrongChassisNumber({this.errorMessage});

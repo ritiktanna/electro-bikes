@@ -1,5 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:electro_bikes/cubits/chassis_number/chassis_number_state.dart';
 import 'package:electro_bikes/utils/app_colors.dart';
+import 'package:electro_bikes/utils/app_route_string.dart';
 import 'package:electro_bikes/utils/app_strings.dart';
 import 'package:electro_bikes/widget/app_text_widget.dart';
 import 'package:electro_bikes/widget/common_button.dart';
@@ -11,8 +14,8 @@ import '../../utils/app_image_string.dart';
 
 class AddVehicle extends StatelessWidget {
   AddVehicle({Key? key}) : super(key: key);
-  final _user = FirebaseAuth.instance.currentUser;
-  // String _chassisNumber = '';
+  String _chassisNumber = '';
+  String? userNumber = FirebaseAuth.instance.currentUser?.phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +58,7 @@ class AddVehicle extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 20),
                       child: MyTextWidget(
                         data:
-                            '+${_user?.phoneNumber?.substring(0, 3)}*******${_user?.phoneNumber?.substring(10)}',
+                            '${userNumber?.substring(0, 3)}*******${userNumber?.substring(10)}',
                         textStyle: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w600,
@@ -97,7 +100,7 @@ class AddVehicle extends StatelessWidget {
                                 .changeInChassisNumber(value);
                           },
                           onChanged: (value) {
-                            // _chassisNumber = value;
+                            _chassisNumber = value;
                             BlocProvider.of<ChassisNumberCubit>(context)
                                 .changeInChassisNumber(value);
                           },
@@ -107,15 +110,14 @@ class AddVehicle extends StatelessWidget {
                                 BlocBuilder<ChassisNumberCubit, ChassisNumber>(
                               builder: (context, state) {
                                 if (state is InitialState ||
-                                    state is WrongChassisNumber) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: CircularProgressIndicator(),
-                                  );
+                                    state is EmptyChassisNumber) {
+                                  return Icon(Icons.error);
+                                } else if (state is RightChassisNumber) {
+                                  return Icon(Icons.check);
                                 } else {
                                   return Icon(
-                                    Icons.check,
-                                    color: AppColors.blueColor,
+                                    Icons.error,
+                                    color: Colors.red,
                                   );
                                 }
                               },
@@ -124,40 +126,16 @@ class AddVehicle extends StatelessWidget {
                         ),
                       ),
                     ),
-                    BlocListener<ChassisNumberCubit, ChassisNumber>(
-                      listener: (context, state) {
-                        if (state is EmptyChassisNumber) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              backgroundColor: AppColors.redColor,
-                              content: MyTextWidget(
-                                data: AppStrings.cantBeEmpty,
-                                textStyle: TextStyle(
-                                  color: AppColors.whiteColor,
-                                ),
-                              ),
-                            ),
-                          );
-                        } else if (state is WrongChassisNumber) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              backgroundColor: AppColors.redColor,
-                              content: MyTextWidget(
-                                data: '${state.errorMessage}',
-                                textStyle: TextStyle(
-                                  color: AppColors.whiteColor,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 50),
-                        child: CommonButton(
-                          text: AppStrings.verified,
-                          onTap: () {},
-                        ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: CommonButton(
+                        text: AppStrings.verified,
+                        onTap: () {
+                          print('pressed');
+                          if (_chassisNumber.length == 17) {
+                            Navigator.pushNamed(context, AppRoutes.homePage);
+                          }
+                        },
                       ),
                     ),
                   ],

@@ -10,8 +10,8 @@ class ChassisNumberCubit extends Cubit<ChassisNumber> {
     if (chassisNumber.isEmpty || chassisNumber.length == 0) {
       emit(EmptyChassisNumber());
     } else if (chassisNumber.length > 17) {
-      emit(WrongChassisNumber(errorMessage: AppStrings.wrongChassisNumber));
-    } else {
+      emit(BiggerChassisNumber(errorMessage: AppStrings.wrongChassisNumber));
+    } else if (chassisNumber.length == 17) {
       emit(RightChassisNumber(isRight: true));
     }
   }
